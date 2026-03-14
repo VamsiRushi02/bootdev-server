@@ -9,7 +9,10 @@ import (
 func main() {
 	const port = "8080"
 
+	flePth := http.FileServer(http.Dir("."))
+
 	mux := http.NewServeMux()
+	mux.Handle("/", flePth)
 
 	svr := &http.Server{
 		Addr:    ":" + port,
