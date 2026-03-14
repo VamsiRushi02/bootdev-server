@@ -7,12 +7,13 @@ import (
 )
 
 func main() {
+	const filepathRoot = "."
 	const port = "8080"
 
-	flePth := http.FileServer(http.Dir("."))
+	flPath := http.FileServer(http.Dir(filepathRoot))
 
 	mux := http.NewServeMux()
-	mux.Handle("/", flePth)
+	mux.Handle("/", flPath)
 
 	svr := &http.Server{
 		Addr:    ":" + port,
